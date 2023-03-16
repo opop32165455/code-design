@@ -12,6 +12,8 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>empty</module>
+        <module>strategy-factory</module>
         <module>cglib</module>
     </modules>
 

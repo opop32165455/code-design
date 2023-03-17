@@ -5,6 +5,7 @@ import cn.hutool.core.thread.ThreadUtil;
 import com.xxx.ListenerApplication;
 import com.xxx.jdkob.CustomObservable;
 import com.xxx.jdkob.CustomObserver;
+import com.xxx.mq.publish.Publisher;
 import com.xxx.spring.CustomEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -65,9 +66,24 @@ public class ListenerApplicationTests {
         //告诉观察者 可以执行一次 没有setChanged则无法处理消息
         customObservable.setChanged();
         customObservable.notifyObservers(Arrays.asList(2, 5));
-        customObservable.notifyObservers(Arrays.asList(1, 3));
-        customObservable.notifyObservers();
 
+        //todo 无法读取
+        customObservable.notifyObservers(Arrays.asList(1, 3));
+
+    }
+
+    @Test
+    public void MqPubSub() {
+        Publisher<String> publisher = new Publisher<>(20);
+
+        publisher.addSub(element -> System.out.println("sub1 consume: " + element));
+        publisher.addSub(element -> System.out.println("sub2 consume: " + element));
+
+        publisher.add("message1");
+        publisher.add("message2");
+        publisher.add("message3");
+
+        publisher.notifyAllSub();
     }
 
 

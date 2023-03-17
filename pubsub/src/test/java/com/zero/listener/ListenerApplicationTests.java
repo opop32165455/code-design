@@ -6,6 +6,7 @@ import com.xxx.ListenerApplication;
 import com.xxx.jdkob.CustomObservable;
 import com.xxx.jdkob.CustomObserver;
 import com.xxx.mq.publish.Publisher;
+import com.xxx.rxjava.RxSyncSubscribe;
 import com.xxx.spring.CustomEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -14,6 +15,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import reactor.core.publisher.Flux;
+import rx.Observable;
+import rx.Subscriber;
 
 import javax.annotation.Resource;
 import java.time.Duration;
@@ -73,7 +76,7 @@ public class ListenerApplicationTests {
     }
 
     @Test
-    public void MqPubSub() {
+    public void mqPubSub() {
         Publisher<String> publisher = new Publisher<>(20);
 
         publisher.addSub(element -> System.out.println("sub1 consume: " + element));
@@ -84,6 +87,37 @@ public class ListenerApplicationTests {
         publisher.add("message3");
 
         publisher.notifyAllSub();
+    }
+
+    @Test
+    public void rxJava() {
+        RxSyncSubscribe rxSyncSubscribe = new RxSyncSubscribe();
+        //1. 被观察者
+        Observable<String> observable = Observable.create(rxSyncSubscribe);
+
+        // 2. 创建观察者
+        Subscriber<String> subscriber = new Subscriber<String>() {
+
+            @Override
+            public void onCompleted() {
+                log.info("onCompleted...");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                log.info("onError...");
+            }
+
+            @Override
+            public void onNext(String s) {
+                log.info("onNext: {}", s);
+            }
+        };
+
+
+        observable.subscribe(subscriber);
+
+
     }
 
 

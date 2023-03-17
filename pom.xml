@@ -14,7 +14,6 @@
     <modules>
         <module>empty</module>
         <module>strategy-factory</module>
-        <module>cglib</module>
         <module>pubsub</module>
     </modules>
 

@@ -22,6 +22,11 @@ cglib实现代理
 
 
 
-### stratege-factory
+### strategy-factory
 
 策略+工厂模式
+
+### pubsub
+
+发布与订阅
+监听者模式

@@ -1,8 +1,10 @@
 package com.xxx;
 
 
+import com.xxx.enumstrategy.EnumFactory;
 import com.xxx.springstrategy.Factory;
 import com.xxx.springstrategy.Handler;
+import lombok.val;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -42,7 +44,7 @@ public class DesignModeApplicationTests {
     @Test
     public void doStrategy3(){
         try {
-            Handler handler = Factory.getInvokeStrategy("strategy3");//选择面条种类
+            val handler = EnumFactory.getInvokeStrategy("strategy1");//选择面条种类
             handler.method1();//揉面
             handler.method2();//做面条
             handler.method3();//下面/doge

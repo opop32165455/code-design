@@ -1,4 +1,4 @@
-package com.xxx.spring;
+package com.xxx.spring.eventlistener;
 
 import lombok.Builder;
 import lombok.Data;

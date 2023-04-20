@@ -7,7 +7,7 @@ import com.xxx.jdkob.CustomObservable;
 import com.xxx.jdkob.CustomObserver;
 import com.xxx.mq.publish.Publisher;
 import com.xxx.rxjava.RxSyncSubscribe;
-import com.xxx.spring.CustomEvent;
+import com.xxx.spring.eventlistener.CustomEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -91,11 +91,7 @@ public class ListenerApplicationTests {
 
     @Test
     public void rxJava() {
-        RxSyncSubscribe rxSyncSubscribe = new RxSyncSubscribe();
-        //1. 被观察者
-        Observable<String> observable = Observable.create(rxSyncSubscribe);
-
-        // 2. 创建观察者
+        // 创建出现问题的响应逻辑
         Subscriber<String> subscriber = new Subscriber<String>() {
 
             @Override
@@ -114,9 +110,11 @@ public class ListenerApplicationTests {
             }
         };
 
+        //创建发生的事件
+        Observable<String> observable = Observable.create(new RxSyncSubscribe());
 
+        //事件发生 和响应逻辑做绑定
         observable.subscribe(subscriber);
-
 
     }
 

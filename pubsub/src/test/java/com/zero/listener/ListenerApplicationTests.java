@@ -120,12 +120,26 @@ public class ListenerApplicationTests {
 
 
     @Test
-    public void contextLoads() {
-        Flux.just("Hello", "World").subscribe(System.out::println);
-        Flux.fromArray(new Integer[]{1, 2, 3}).subscribe(System.out::println);
-        Flux.empty().subscribe(System.out::println);
-        Flux.range(1, 10).subscribe(System.out::println);
-        Flux.interval(Duration.of(10, ChronoUnit.SECONDS)).subscribe(System.out::println);
+    public void fluxDemo() {
+        //just(T... data)
+        Flux.just("Hello", "World")
+                .map(s->s)
+                .distinct()
+                .filter(s->true)
+                //订阅一个打印逻辑
+                .subscribe(System.out::println);
+        //array
+        Flux.fromArray(new Integer[]{1, 2, 3})
+                .subscribe(System.out::println);
+        //empty
+        Flux.empty()
+                .subscribe(System.out::println);
+        //range
+        Flux.range(1, 10)
+                .subscribe(System.out::println);
+        //interval(Duration period)
+        Flux.interval(Duration.of(10, ChronoUnit.SECONDS))
+                .subscribe(System.out::println);
     }
 
 }

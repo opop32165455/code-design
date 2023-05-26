@@ -19,9 +19,8 @@ import javax.annotation.Resource;
 @Slf4j
 public class AopProxyTest {
 
-    @Resource(name = "class01") private Interface0 class01;
-
-
+    @Resource(name = "class01")
+    private Interface0 class01;
 
     @Test
     public void test01() {

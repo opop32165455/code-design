@@ -12,7 +12,7 @@ public class Class01 implements Interface0 {
     @Override
     @AopAnno
     public String method0(String name, Integer age) {
-        System.out.println(">>>>class01 method 0");
+        System.out.println(">>>>class01 method 0 name:" + name + " age:" + age);
         return "Class01";
     }
 

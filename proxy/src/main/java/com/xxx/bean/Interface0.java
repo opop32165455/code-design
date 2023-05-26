@@ -13,7 +13,7 @@ public interface Interface0 {
      * @param age  age
      * @return String
      */
-    String method0(String name,Integer age);
+    String method0(String name, Integer age);
 
     /**
      * method1

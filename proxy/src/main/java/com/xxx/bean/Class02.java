@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class Class02 implements Interface0{
     @Override
     public String method0(String name, Integer age) {
-        System.out.println(">>>>class02 method 0");
+        System.out.println(">>>>class02 method 0 name:" + name + " age:" + age);
         return "Class02";
     }
 

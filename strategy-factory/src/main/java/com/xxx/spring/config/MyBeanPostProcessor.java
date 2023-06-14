@@ -1,16 +1,16 @@
-package com.xxx.springstrategy.config;
+package com.xxx.spring.config;
 
-import com.xxx.springstrategy.Factory;
-import com.xxx.springstrategy.Handler;
-import com.xxx.springstrategy.StrategyAnno;
+import com.xxx.spring.Factory;
+import com.xxx.spring.Handler;
+import com.xxx.common.StrategyAnno;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @Desciption: bean初始化 通过注解 把对应业务逻辑的策略 根据value 注册到工厂里去
+ *  bean初始化 通过注解 把对应业务逻辑的策略 根据value 注册到工厂里去
  * @author ZhangXueCheng4441
- * @Date:2020/12/13/013 10:27
+ * @date 2020/12/13/013 10:27
  */
 @Configuration
 public class MyBeanPostProcessor implements BeanPostProcessor {

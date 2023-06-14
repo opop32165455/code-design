@@ -1,4 +1,4 @@
-package com.xxx.springstrategy;
+package com.xxx.spring;
 
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.StrUtil;
@@ -6,9 +6,8 @@ import cn.hutool.core.util.StrUtil;
 import java.util.Map;
 
 /**
- * @Desciption:
  * @author   ZhangXueCheng4441
- * @Date:2020/12/12/012 16:28
+ * @date  2020/12/12/012 16:28
  */
 public class Factory {
 

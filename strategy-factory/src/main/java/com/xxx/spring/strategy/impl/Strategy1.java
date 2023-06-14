@@ -1,13 +1,13 @@
-package com.xxx.springstrategy.strategy.impl;
+package com.xxx.spring.strategy.impl;
 
-import com.xxx.springstrategy.Factory;
-import com.xxx.springstrategy.StrategyHandler;
+import com.xxx.spring.Factory;
+import com.xxx.spring.StrategyHandler;
 import org.springframework.stereotype.Component;
 
 /**
- * @Desciption: 类似于servic的写法
+ *  类似于servic的写法
  * @author   ZhangXueCheng4441
- * @Date:2020/12/12/012 15:16
+ * @date 2020/12/12/012 15:16
  */
 @Component
 public class Strategy1 implements StrategyHandler {

@@ -1,15 +1,14 @@
-package com.xxx.springstrategy;
+package com.xxx.common;
 
 import java.lang.annotation.*;
 
 /**
- * @Desciption:
- * @author   ZhangXueCheng4441
- * @Date:2020/12/12/012 17:44
+ * @author ZhangXueCheng4441
+ * @date 2020/12/12/012 17:44
  */
 @Retention(RetentionPolicy.RUNTIME)
 //作用范围
-@Target({ElementType.TYPE,ElementType.METHOD})
+@Target({ElementType.TYPE, ElementType.METHOD})
 //生效到文档
 @Documented
 public @interface StrategyAnno {

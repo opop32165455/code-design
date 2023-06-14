@@ -1,9 +1,11 @@
 package com.xxx;
 
 
-import com.xxx.enumstrategy.EnumFactory;
-import com.xxx.springstrategy.Factory;
-import com.xxx.springstrategy.Handler;
+import com.xxx.common.MethodHandler;
+import com.xxx.enumeration.EnumFactory;
+import com.xxx.map.StaticFactory;
+import com.xxx.spring.Factory;
+import com.xxx.spring.Handler;
 import lombok.val;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,7 +31,7 @@ public class DesignModeApplicationTests {
      *        现在有二十种不同的面条 每个操作都不一样 要每种做一万碗（工厂模式选择面条 做面方法放在策略模式）
      */
     @Test
-    public void doStrategy123(){
+    public void doStrategy12(){
         try {
             //Handler handler = Factory0.getInvokeStrategy("strategy1");//选择面条种类
             Handler handler = Factory.getInvokeStrategy("strategy2");//选择面条种类
@@ -40,15 +42,12 @@ public class DesignModeApplicationTests {
             e.printStackTrace();//很容易空指针
         }
     }
-    //通过注解的方式 注册的策略
+    //通过枚举的方式 注册的策略
     @Test
     public void doStrategy3(){
         try {
             val handler = EnumFactory.getInvokeStrategy("strategy1");//选择面条种类
-            handler.method1();//揉面
-            handler.method2();//做面条
-            handler.method3();//下面/doge
-            handler.method4();//辣椒
+            handleMethod(handler);
         } catch (Exception e) {
             e.printStackTrace();//很容易空指针
         }
@@ -56,4 +55,27 @@ public class DesignModeApplicationTests {
 
 
 
+
+    //通过常规的方式 注册的策略
+    @Test
+    public void doStrategy4(){
+        try {
+           //选择面条种类
+            MethodHandler strategy1 = StaticFactory.getHandler("strategy1");
+            handleMethod(strategy1);
+
+            //注解注入
+            val methodHandler = StaticFactory.getHandler("s2");
+            handleMethod(methodHandler);
+        } catch (Exception e) {
+            e.printStackTrace();//很容易空指针
+        }
+    }
+
+    private void handleMethod(MethodHandler handler) {
+        handler.method1();//揉面
+        handler.method2();//做面条
+        handler.method3();//下面/doge
+        handler.method4();//辣椒
+    }
 }
